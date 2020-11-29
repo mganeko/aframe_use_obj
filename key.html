@@ -10,6 +10,9 @@
   <a-scene>
     <a-camera position="0 0.05 0.8"></a-camera>>
     </a-camera>
+    <a-entity geometry="primitive: plane; width: 2; height: auto" material="color: gray" position="-1 1.2 -1"
+      text="value: [Key Contorl]\n - w/s ... Camera forward/backword\n - a/d... Camera left/right\n - i/k ... Camera up/down\n - j/l ... Object rotate">
+    </a-entity>
     <a-assets>
       <a-asset-item id="tree-obj" src="poly/cropped_textured_mesh.obj"></a-asset-item>
       <a-asset-item id="tree-mtl" src="poly/cropped_textured_mesh.mtl"></a-asset-item>
@@ -53,50 +56,50 @@
       pos.y -= POS_STEP;
       camera.setAttribute('position', pos);
     }
-    else if (keyName === 'j') {
-      // -- camera down --
-      const pos = camera.getAttribute('position');
-      //console.log('camera pos:', pos);
-      pos.x -= POS_STEP;
-      camera.setAttribute('position', pos);
-    }
-    else if (keyName === 'l') {
-      // -- camera down --
-      const pos = camera.getAttribute('position');
-      //console.log('camera pos:', pos);
-      pos.x += POS_STEP;
-      camera.setAttribute('position', pos);
-    }
+    // else if (keyName === 'j') {
+    //   // -- camera down --
+    //   const pos = camera.getAttribute('position');
+    //   //console.log('camera pos:', pos);
+    //   pos.x -= POS_STEP;
+    //   camera.setAttribute('position', pos);
+    // }
+    // else if (keyName === 'l') {
+    //   // -- camera down --
+    //   const pos = camera.getAttribute('position');
+    //   //console.log('camera pos:', pos);
+    //   pos.x += POS_STEP;
+    //   camera.setAttribute('position', pos);
+    // }
 
     // --- object ----
-    if (keyName === 'J') {
+    if (keyName === 'j') {
       // -- object rotate --
       const rot = obj.getAttribute('rotation');
       rot.y += ROT_STEP
       console.log('obj rotation:', rot);
       obj.setAttribute('rotation', rot);
     }
-    else if (keyName === 'L') {
+    else if (keyName === 'l') {
       // -- object rotate --
       const rot = obj.getAttribute('rotation');
       rot.y -= ROT_STEP
       console.log('obj rotation:', rot);
       obj.setAttribute('rotation', rot);
     }
-    else if (keyName === 'I') {
-      // -- object rotate --
-      const rot = obj.getAttribute('rotation');
-      rot.x += ROT_STEP
-      console.log('obj rotation:', rot);
-      obj.setAttribute('rotation', rot);
-    }
-    else if (keyName === 'K') {
-      // -- object rotate --
-      const rot = obj.getAttribute('rotation');
-      rot.x -= ROT_STEP
-      console.log('obj rotation:', rot);
-      obj.setAttribute('rotation', rot);
-    }
+    // else if (keyName === 'I') {
+    //   // -- object rotate --
+    //   const rot = obj.getAttribute('rotation');
+    //   rot.x += ROT_STEP
+    //   console.log('obj rotation:', rot);
+    //   obj.setAttribute('rotation', rot);
+    // }
+    // else if (keyName === 'K') {
+    //   // -- object rotate --
+    //   const rot = obj.getAttribute('rotation');
+    //   rot.x -= ROT_STEP
+    //   console.log('obj rotation:', rot);
+    //   obj.setAttribute('rotation', rot);
+    // }
   })
 </script>
 
