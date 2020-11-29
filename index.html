@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Obj in A-Frame</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="tree-obj" src="poly/cropped_textured_mesh.obj"></a-asset-item>
+      <a-asset-item id="tree-mtl" src="poly/cropped_textured_mesh.mtl"></a-asset-item>
+    </a-assets>
+
+    <a-entity obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-0.5 2 -0.5" scale="0.5 0.5 0.5"></a-entity>
+
+    <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+</body>
+
+</html>

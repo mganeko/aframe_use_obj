@@ -1,0 +1,226 @@
+# Created by Polycam
+# object name: cropped_textured_mesh
+newmtl cropped_textured_mesh_0
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_0_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_1
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_1_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_2
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_2_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_3
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_3_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_4
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_4_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_5
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_5_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_6
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_6_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_7
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_7_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_8
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_8_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_9
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_9_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_10
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_10_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_11
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_11_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_12
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_12_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_13
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_13_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_14
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_14_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_15
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_15_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_16
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_16_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_17
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_17_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_18
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_18_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_19
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_19_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_20
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_20_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_21
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_21_GA5r3tu7.jpg
+#newmtl cropped_textured_mesh_22
+#Ka 0.000 0.000 0.000
+#Kd 1.000 1.000 1.000
+#Ks 0.000 0.000 0.000
+#Tr 0.000000
+#illum 1
+#Ns 1.000000
+#map_Kd cropped_textured_mesh_22_GA5r3tu7.jpg
+#newmtl cropped_textured_mesh_23
+#Ka 0.000 0.000 0.000
+#Kd 1.000 1.000 1.000
+#Ks 0.000 0.000 0.000
+#Tr 0.000000
+#illum 1
+#Ns 1.000000
+#map_Kd cropped_textured_mesh_23_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_24
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_24_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_25
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_25_GA5r3tu7.jpg
+newmtl cropped_textured_mesh_26
+Ka 0.000 0.000 0.000
+Kd 1.000 1.000 1.000
+Ks 0.000 0.000 0.000
+Tr 0.000000
+illum 1
+Ns 1.000000
+map_Kd cropped_textured_mesh_26_GA5r3tu7.jpg
+#newmtl cropped_textured_mesh_27
+#Ka 0.000 0.000 0.000
+#Kd 1.000 1.000 1.000
+#Ks 0.000 0.000 0.000
+#Tr 0.000000
+#illum 1
+#Ns 1.000000
+#map_Kd cropped_textured_mesh_27_GA5r3tu7.jpg

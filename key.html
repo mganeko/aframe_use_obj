@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Obj in A-Frame</title>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene>
+    <a-camera position="0 0.05 0.8"></a-camera>>
+    </a-camera>
+    <a-assets>
+      <a-asset-item id="tree-obj" src="poly/cropped_textured_mesh.obj"></a-asset-item>
+      <a-asset-item id="tree-mtl" src="poly/cropped_textured_mesh.mtl"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="wrap_pbj" position="0 0 0">
+      <a-entity id="gard_obj" obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-0.5 0.4 0.5" scale="0.5 0.5 0.5">
+      </a-entity>
+    </a-entity>
+
+    <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+</body>
+<script>
+  const scene = document.querySelector('a-scene');
+  console.log('scene:', scene);
+  const camera = document.querySelector('a-camera');
+  console.log('camera:', camera);
+  //const obj = document.querySelector('#gard_obj');
+  const obj = document.querySelector('#wrap_pbj');
+  console.log('obj:', obj);
+
+  document.addEventListener('keydown', (evt) => {
+    const POS_STEP = 0.02;
+    const ROT_STEP = 5;
+    const keyName = evt.key;
+    console.log('keydown:', keyName);
+
+    // --- camera ----
+    if (keyName === 'i') {
+      // -- camera up --
+      const pos = camera.getAttribute('position');
+      //console.log('camera pos:', pos);
+      pos.y += POS_STEP;
+      camera.setAttribute('position', pos);
+    }
+    else if (keyName === 'k') {
+      // -- camera down --
+      const pos = camera.getAttribute('position');
+      //console.log('camera pos:', pos);
+      pos.y -= POS_STEP;
+      camera.setAttribute('position', pos);
+    }
+    else if (keyName === 'j') {
+      // -- camera down --
+      const pos = camera.getAttribute('position');
+      //console.log('camera pos:', pos);
+      pos.x -= POS_STEP;
+      camera.setAttribute('position', pos);
+    }
+    else if (keyName === 'l') {
+      // -- camera down --
+      const pos = camera.getAttribute('position');
+      //console.log('camera pos:', pos);
+      pos.x += POS_STEP;
+      camera.setAttribute('position', pos);
+    }
+
+    // --- object ----
+    if (keyName === 'J') {
+      // -- object rotate --
+      const rot = obj.getAttribute('rotation');
+      rot.y += ROT_STEP
+      console.log('obj rotation:', rot);
+      obj.setAttribute('rotation', rot);
+    }
+    else if (keyName === 'L') {
+      // -- object rotate --
+      const rot = obj.getAttribute('rotation');
+      rot.y -= ROT_STEP
+      console.log('obj rotation:', rot);
+      obj.setAttribute('rotation', rot);
+    }
+    else if (keyName === 'I') {
+      // -- object rotate --
+      const rot = obj.getAttribute('rotation');
+      rot.x += ROT_STEP
+      console.log('obj rotation:', rot);
+      obj.setAttribute('rotation', rot);
+    }
+    else if (keyName === 'K') {
+      // -- object rotate --
+      const rot = obj.getAttribute('rotation');
+      rot.x -= ROT_STEP
+      console.log('obj rotation:', rot);
+      obj.setAttribute('rotation', rot);
+    }
+  })
+</script>
+
+</html>
