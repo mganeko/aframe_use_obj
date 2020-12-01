@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Obj in A-Frame</title>
+  <!--
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  -->
+  <script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
+  <script src="https://signaling.talkin.info/socket.io/socket.io.js"></script>
+  <script>
+    "use strict"
+    AFRAME.registerComponent('rotation-reader', {
+      tick: function () {
+        // `this.el` is the element.
+        // `object3D` is the three.js object.
+
+        // `rotation` is a three.js Euler using radians. `quaternion` also available.
+        console.log(this.el.object3D.rotation);
+
+        // `position` is a three.js Vector3.
+        console.log(this.el.object3D.position);
+      }
+    });
+  </script>
+</head>
+
+<body>
+  <a-scene>
+    <a-camera position="0 0.05 0.8" look-controls-enabled=true></a-camera>>
+    </a-camera>
+    <a-entity geometry="primitive: plane; width: 2; height: auto" material="color: gray" position="-1 1.2 -1"
+      text="value: [Key Contorl]\n - w/s ... Camera forward/backword\n - a/d... Camera left/right\n - i/k ... Camera up/down\n - j/l ... Object rotate">
+    </a-entity>
+    <a-assets>
+      <a-asset-item id="tree-obj" src="poly/cropped_textured_mesh.obj"></a-asset-item>
+      <a-asset-item id="tree-mtl" src="poly/cropped_textured_mesh.mtl"></a-asset-item>
+    </a-assets>
+
+    <a-entity id="wrap_pbj" position="0 0 0">
+      <a-entity id="gard_obj" obj-model="obj: #tree-obj; mtl: #tree-mtl" position="-0.5 0.4 0.5" scale="0.5 0.5 0.5">
+      </a-entity>
+    </a-entity>
+
+    <a-sky color="#ECECEC"></a-sky>
+  </a-scene>
+</body>
+<script>
+  "use strict"
+  const scene = document.querySelector('a-scene');
+  console.log('scene:', scene);
+  const camera = document.querySelector('a-camera');
+  console.log('camera:', camera);
+  //const obj = document.querySelector('#gard_obj');
+  const obj = document.querySelector('#wrap_pbj');
+  console.log('obj:', obj);
+
+  document.addEventListener('keydown', (evt) => {
+    const POS_STEP = 0.02;
+    const ROT_STEP = 5;
+    const keyName = evt.key;
+    console.log('keydown:', keyName);
+
+    // --- camera ----
+    if (keyName === 'i') {
+      // -- camera up --
+      const pos = camera.getAttribute('position');
+      //console.log('camera pos:', pos);
+      pos.y += POS_STEP;
+      camera.setAttribute('position', pos);
+    }
+    else if (keyName === 'k') {
+      // -- camera down --
+      const pos = camera.getAttribute('position');
+      //console.log('camera pos:', pos);
+      pos.y -= POS_STEP;
+      camera.setAttribute('position', pos);
+    }
+    // else if (keyName === 'u') {
+    //   console.log(camera);
+    //   console.log(camera.components);
+    //   const control = camera.components['look-controls'];
+    //   console.log(control);
+
+    //   // -- camera rotate --
+    //   const rot = camera.getAttribute('rotation');
+    //   //console.log('camera pos:', pos);
+    //   rot.y += ROT_STEP;
+    //   camera.setAttribute('rotation', rot);
+    // }
+    // else if (keyName === 'o') {
+    //   // -- camera rotate --
+    //   const rot = camera.getAttribute('rotation');
+    //   //console.log('camera pos:', pos);
+    //   rot.y -= ROT_STEP;
+    //   camera.setAttribute('rotation', rot);
+    // }
+
+    // else if (keyName === 'j') {
+    //   // -- camera down --
+    //   const pos = camera.getAttribute('position');
+    //   //console.log('camera pos:', pos);
+    //   pos.x -= POS_STEP;
+    //   camera.setAttribute('position', pos);
+    // }
+    // else if (keyName === 'l') {
+    //   // -- camera down --
+    //   const pos = camera.getAttribute('position');
+    //   //console.log('camera pos:', pos);
+    //   pos.x += POS_STEP;
+    //   camera.setAttribute('position', pos);
+    // }
+
+    // --- object ----
+    if (keyName === 'j') {
+      // -- object rotate --
+      const rot = obj.getAttribute('rotation');
+      rot.y += ROT_STEP
+      console.log('obj rotation:', rot);
+      obj.setAttribute('rotation', rot);
+    }
+    else if (keyName === 'l') {
+      // -- object rotate --
+      const rot = obj.getAttribute('rotation');
+      rot.y -= ROT_STEP
+      console.log('obj rotation:', rot);
+      obj.setAttribute('rotation', rot);
+    }
+    // else if (keyName === 'I') {
+    //   // -- object rotate --
+    //   const rot = obj.getAttribute('rotation');
+    //   rot.x += ROT_STEP
+    //   console.log('obj rotation:', rot);
+    //   obj.setAttribute('rotation', rot);
+    // }
+    // else if (keyName === 'K') {
+    //   // -- object rotate --
+    //   const rot = obj.getAttribute('rotation');
+    //   rot.x -= ROT_STEP
+    //   console.log('obj rotation:', rot);
+    //   obj.setAttribute('rotation', rot);
+    // }
+  })
+
+  // --- check camera and obj pos/rotate ---
+  let prevCameraPos = { x: 0, y: 0, z: 0 }; //null;
+  let prevCameraRotate = { x: 0, y: 0, z: 0 }; //null;
+  let prevObjPos = { x: 0, y: 0, z: 0 }; //null;
+  let prevObjRotate = { x: 0, y: 0, z: 0 }; //null;
+
+  function checkMove() {
+    const posCam = camera.getAttribute('position');
+    const rotCam = camera.getAttribute('rotation');
+    const posObj = obj.getAttribute('position');
+    const rotObj = obj.getAttribute('rotation');
+    //console.log('camera prv:', prevCameraPos);
+    //console.log('camera pos:', pos);
+
+    let changed = false;
+
+    // --- camera ---
+    if (!isSamePosition(prevCameraPos, posCam)) {
+      console.log('camera position changed:', posCam);
+      prevCameraPos.x = posCam.x;
+      prevCameraPos.y = posCam.y;
+      prevCameraPos.z = posCam.z;
+      changed = true;
+    }
+    if (!isSameRotation(prevCameraRotate, rotCam)) {
+      console.log('camera rotation changed:', rotCam);
+      prevCameraRotate.x = rotCam.x;
+      prevCameraRotate.y = rotCam.y;
+      prevCameraRotate.z = rotCam.z;
+      //changed = true; // DO NOT Sync now (set rotation NOT effective)
+    }
+
+    // --- obj ---
+    if (!isSamePosition(prevObjPos, posObj)) {
+      console.log('object position changed:', posObj);
+      prevObjPos.x = posObj.x;
+      prevObjPos.y = posObj.y;
+      prevObjPos.z = posObj.z;
+      changed = true;
+    }
+    if (!isSameRotation(prevObjRotate, rotObj)) {
+      console.log('object rotation changed:', rotObj);
+      prevObjRotate.x = rotObj.x;
+      prevObjRotate.y = rotObj.y;
+      prevObjRotate.z = rotObj.z;
+      changed = true;
+    }
+
+    // --- sync ----
+    if (changed) {
+      requestSyncCameraAndObj(posCam, rotCam, posObj, rotObj);
+    }
+  }
+
+  const timeId = setInterval(checkMove, 100);
+
+  function isSamePosition(pos1, pos2) {
+    if ((!pos1) || (!pos2)) {
+      console.error('BAD position');
+      return false;
+    }
+
+    if ((pos1.x === pos2.x) && (pos1.y === pos2.y) && (pos1.z === pos2.z)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  function isSameRotation(rot1, rot2) {
+    if ((!rot1) || (!rot2)) {
+      console.error('BAD position');
+      return false;
+    }
+
+    if ((rot1.x === rot2.x) && (rot1.y === rot2.y) && (rot1.z === rot2.z)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  function requestSyncCameraAndObj(posCam, rotCam, posObj, rotObj) {
+    socket.json.send({
+      type: "sync_pos_rot",
+      camera: { pos: posCam, rot: rotCam },
+      obj: { pos: posObj, rot: rotObj }
+    });
+  }
+
+  function acceptSyncCameraAndObj(cameraInfo, objInfo) {
+    const posCam = cameraInfo.pos;
+    const rotCam = cameraInfo.rot;
+    const posObj = objInfo.pos;
+    const rotObj = objInfo.rot;
+
+    camera.setAttribute('position', posCam);
+    camera.setAttribute('rotation', rotCam); // <-- NOT EFFECTIVE
+    obj.setAttribute('position', posObj);
+    obj.setAttribute('rotation', rotObj);
+
+    prevCameraPos.x = posCam.x;
+    prevCameraPos.y = posCam.y;
+    prevCameraPos.z = posCam.z;
+    prevCameraRotate.x = rotCam.x;
+    prevCameraRotate.y = rotCam.y;
+    prevCameraRotate.z = rotCam.z;
+
+    prevObjPos.x = posObj.x;
+    prevObjPos.y = posObj.y;
+    prevObjPos.z = posObj.z;
+
+    prevObjRotate.x = rotObj.x;
+    prevObjRotate.y = rotObj.y;
+    prevObjRotate.z = rotObj.z;
+  }
+
+  // ----------- socket.io -----------------
+
+  function showError(msg) {
+    console.error(msg);
+  }
+
+  // create socket
+  try {
+    if (!io) {
+      showError('Sorry, signaling error.  Please conntact to admin');
+    }
+  }
+  catch (e) {
+    showError('Sorry, signaling exception.  Please conntact to admin');
+  }
+  const socket = io.connect('https://signaling.talkin.info/');
+
+  // socket: channel connected
+  socket.on('connect', onChannelOpened)
+    .on('welcome', onWelcome)
+    //.on('server notify', onServerNotify)
+    .on('user disconnected', onUserDisconnect)
+    .on('message', onMessage)
+    .on('error', onSocketError);
+
+  function onSocketError(e) {
+    console.error(e);
+    showError('Sorry, socket error. Please contact to admin.');
+  }
+
+  function onChannelOpened(evt) {
+    console.log('Channel opened.');
+
+    // ---- multi room ----
+    var roomname = getRoomName();
+    socket.emit('enter', roomname);
+  }
+
+  function onWelcome(evt) {
+    socket.id = evt.id;
+    console.log("Enter into: " + getRoomName() + ", " + evt.members + " people in here");
+    return;
+  }
+
+  function onUserDisconnect(evt) {
+    if (evt) {
+      console.warn("user disconnect id=" + evt.id);
+    }
+  }
+
+  function onMessage(evt) {
+    const id = evt.from;
+    const target = evt.sendto;
+    const type = evt.type;
+    console.log('message type:%s, from:%s, to:%s', type, id, target);
+    if (type === 'sync_pos_rot') {
+      console.log('sync message:', evt);
+      acceptSyncCameraAndObj(evt.camera, evt.obj)
+    }
+  }
+
+  function getRoomName() {
+    return '_obj_sync_room';
+  }
+
+</script>
+
+</html>
